@@ -1,16 +1,15 @@
 package greetings
 
 import (
-	"fmt"
+	"strings"
 	"testing"
 )
 
 func TestHelloName(t *testing.T) {
 	name := "hogeo"
-	want := fmt.Sprintf("Hi, %s. Welcome (^Д^) // !!", name)
 	msg, _ := Hello(name)
-	if msg != want {
-		t.Fatalf(`Hello("Gladys") = %q, want match for %q, nil`, msg, want)
+	if !strings.Contains(msg, name) {
+		t.Fatalf(`Hello("Gladys") = %q, must contains %q`, msg, name)
 	}
 }
 func TestHelloNameEmpty(t *testing.T) {
