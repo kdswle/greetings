@@ -12,13 +12,13 @@ func Hello(name string) (string, error) {
 		return "", errors.New("empty name")
 	}
 	// Return a greeting that embeds the name in a message.
-	message := fmt.Sprintf("Hi, %v. Welcome (^Д^) // !!", name)
+	message := fmt.Sprintf(randomFormat(), name)
 	return message, nil
 }
 
 func randomFormat() string {
 	formats := []string{
-		"Hi, %v. Welcome!",
+		"Hi, %v. Welcome (^Д^) // !!",
 		"Great to see you, %v!",
 		"Hail, %v! Well met!",
 		"Bonjour, %v vous allez bien ?",
