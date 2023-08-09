@@ -16,6 +16,20 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+func Hellos(names []string) (map[string]string, error) {
+	messages := make(map[string]string)
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		// マップ内で、
+		// 取得したメッセージを名前に関連付けます。
+		messages[name] = message
+	}
+	return messages, nil
+}
+
 func randomFormat() string {
 	formats := []string{
 		"Hi, %v. Welcome (^Д^) // !!",

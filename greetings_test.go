@@ -8,10 +8,30 @@ import (
 
 func TestHelloName(t *testing.T) {
 	name := "hogeo"
-	msg, _ := Hello(name)
+	msg, err := Hello(name)
+	if err != nil {
+		t.Fatalf(`error occurs in Hello, msg: %q name: %q`, msg, name)
+	}
 	if !strings.Contains(msg, name) {
 		t.Fatalf(`Hello("Gladys") = %q, must contains %q`, msg, name)
 	}
+}
+func TestHellos(t *testing.T) {
+	names := []string{
+		"hogeo",
+		"hanako",
+		"john",
+	}
+	msgs, err := Hellos(names)
+	if err != nil {
+		t.Fatalf(`error occurs in Hello %q, msgs: %v names: %v`, err, msgs, names)
+	}
+	for _, name := range names {
+		if !strings.Contains(msgs[name], name) {
+			t.Fatalf(`Hello("Gladys") = %q, must contains %q`, msgs[name], name)
+		}
+	}
+
 }
 func TestAllRandomFormat(t *testing.T) {
 	name := "hogeo"
